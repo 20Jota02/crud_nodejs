@@ -45,12 +45,13 @@ export const getTask = async (req, res) =>{
 
 export const createTasks = async (req, res) =>{
 
-    const {name, done } = req.body
+    const {name, done, projectId } = req.body
     try {
         const newTask = await Task.create({
     
             name, 
               done,
+              projectId
         
         });
     
