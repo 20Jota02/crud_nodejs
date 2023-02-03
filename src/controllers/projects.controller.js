@@ -1,5 +1,6 @@
 // para guardar 
 import {Project} from '../models/Project.js'
+import { Task } from "../models/Task.js";
 
 // para poder crear consultas
 
@@ -97,6 +98,8 @@ res.json(project)
 // eliminar
 
 export const deleteProject = async (req, res)=>{
+
+    
     const { id } = req.params;
     try {
         await Project.destroy({
@@ -113,6 +116,17 @@ res.send('el producto se elimino correctamente ')
     }
 }
 
+
+
+export const getProjectTasks = async (req, res)=>{
+
+const {id} = req.params;
+ const task = await Task.findAll({
+    where: {projectId: id}
+
+})
+res.json(task)
+}
 
 
 

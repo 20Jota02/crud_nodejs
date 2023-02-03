@@ -67,22 +67,18 @@ export const createTasks = async (req, res) =>{
     export const updateTasks = async (req, res)=>{
         try {
             const { id } = req.params;
-            const {  name, done } = req.body;  
+    
         
-        const task = await Task.findByPk(id);
-        
-        task.name = name;
-        task.done = done;
+        const task = await Task.findOne({
+            where : {id},
+        })
+        task.set(req.body);
        
         
         await task.save();
          
-        if(!task) {
-            return res.status(404).json ({message: 'projecto no existe'});
-        }
-        // res.send('el producto se actualizo correctamente ')
-        
-        res.json(task)
+        return res.json(task)
+
         } catch (error) {
             return res.status(500).json ({message: error.message});
             
@@ -102,6 +98,7 @@ export const deleteTasks = async (req, res)=>{
                 id,
             },
         });
+        
 res.send('el producto se elimino correctamente ')
 
     } catch (error) {
