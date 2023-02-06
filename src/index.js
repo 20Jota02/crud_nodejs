@@ -33,3 +33,6 @@ main();
 
 // app.use(express.static(join(__dirname, 'public')))
 
+
+
+  // nota : para crear que no se cree mas campos comentamso  los modelos y colocamos un force:false 

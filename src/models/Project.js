@@ -19,6 +19,9 @@ import { Task } from './Task.js'
 
         type: DataTypes.STRING
     },
+    image: {
+        type:DataTypes.STRING
+    },
     priority: {
 
         type: DataTypes.INTEGER

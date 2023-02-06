@@ -12,7 +12,7 @@ import { Task } from "../models/Task.js";
     try {
         const proyects = await Project.findAll()
 
-    res.json(proyects)
+        res.json(proyects)
 
     } catch (error) {
     return res.status(500).json ({message: error.message});
@@ -47,12 +47,12 @@ export const getProject = async (req, res) =>{
 
  export const createProject = async (req, res) =>{
 
-const {name, priority, descripcion} = req.body
+const {name, priority, descripcion,image} = req.body
 try {
     const newProyect = await Project.create({
 
         name, 
-        
+        image,
         descripcion,
     
         priority,
